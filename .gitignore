@@ -122,3 +122,5 @@ settings.local.json
 *.swp
 *.swo
 .history/
+
+uploads/
