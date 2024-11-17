@@ -23,7 +23,10 @@ const getPlaceById = async (req, res, next) => {
   }
 
   if (!place) {
-    const error = HttpError('Could not find a place for the provided id.', 404);
+    const error = new HttpError(
+      'Could not find a place for the provided id.',
+      404
+    );
     return next(error);
   }
 
@@ -45,11 +48,7 @@ const getPlacesByUserId = async (req, res, next) => {
   }
 
   if (!places || places.length === 0) {
-    const error = new HttpError(
-      'Could not find places for the provided user id.',
-      404
-    );
-    return next(error);
+    return next(new HttpError('No places found for this user', 404));
   }
 
   res.json({
